@@ -1,0 +1,71 @@
+{
+  "name": "Kloud",
+  "version": "1.0.3",
+  "description": "des",
+  "main": "main.js",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win",
+    "windows": "electron-packager . KloudSync --platform=win32 --arch=x64 --icon=icon.ico --out=./dist --asar --app-version=1.0.0 --overwrite=true  --ignore=\"(dist|src|docs|.gitignore|LICENSE|README.md|webpack.config.js|node_modules)\"",
+    "win": "electron-packager . Kloud --platform=win32 --arch=x64 --icon=kloud.ico --out=./dist --overwrite=true",
+    "peertime": "electron-packager . PeerTime --platform=win32 --arch=x64 --icon=peertime.ico --out=./dist --asar --app-version=1.0.0 --overwrite=true"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "electron-updater": "^4.3.5"
+  },
+  "devDependencies": {
+    "electron": "^5.0.8",
+    "electron-builder": "^22.8.0",
+    "electron-packager": "^14.2.1",
+    "electron-updater": "^4.3.5"
+  },
+  "build": {
+    "extraResources": {
+      "from": "./extraResources/",
+      "to": "extraResources"
+    },
+    "publish": {
+      "provider": "generic",
+      "url": "https://hazel-hfdirkom6-xukeler.vercel.app"
+    },
+    "productName": "Kloud",
+    "appId": "com.Techexcel.Kloud",
+    "directories": {
+      "output": "dist"
+    },
+    "mac": {
+      "icon": "kloud.ico",
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "win": {
+      "icon": "kloud.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "ia32",
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "kloud.ico",
+      "uninstallerIcon": "kloud.ico",
+      "installerHeaderIcon": "kloud.ico",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "kloud"
+    }
+  }
+}
